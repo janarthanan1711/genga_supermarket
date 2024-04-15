@@ -63,30 +63,17 @@ class _CustomOrderState extends State<CustomOrder>
         await FileUploadRepository().getCustomOrderDatas(page: currentPage);
     if (customDataResponse.customData!.isNotEmpty) {
       dataAvailable = true;
-      List<CustomData> imageList =
-      customDataResponse.customData!.where((n) => n.type == "image").toList();
-      List<CustomData> audioList =
-      customDataResponse.customData!.where((n) => n.type != "audio").toList();
+      List<CustomData> imageList = customDataResponse.customData!
+          .where((n) => n.type == "image")
+          .toList();
       _images.addAll(imageList);
+      List<CustomData> audioList = customDataResponse.customData!
+          .where((n) => n.type == "audio")
+          .toList();
       loadedAudio.addAll(audioList);
-      setState(() {
-
-      });
-      // customDataResponse.customData!.forEach(
-      //   (customData) {
-      //     print("custom order type=======>${customData.type}");
-      //     if (customData.type == "image") {
-      //       _images.add(customData.file!);
-      //       setState(() {});
-      //     } else if (customData.type == "audio") {
-      //       // Add audio image asset
-      //       print(customData.file);
-      //       loadedAudio.add(customData.file!);
-      //       setState(() {});
-      //     }
-      //     // _images.add(customData.file!);
-      //   },
-      // );
+      print("Images length========>${_images.length}");
+      print("Audio Length=========>${loadedAudio.length}");
+      setState(() {});
     } else {
       dataAvailable = false;
       setState(() {});

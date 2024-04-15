@@ -488,7 +488,8 @@ class _ProductDetailsState extends State<ProductDetails>
                           ),
                           onPressed: () {
                             onCopyTap(setState);
-                            Clipboard.setData(ClipboardData(text: _productDetails!.link??""));
+                            Clipboard.setData(ClipboardData(
+                                text: _productDetails!.link ?? ""));
                             // SocialShare.copyToClipboard(
                             //     text: _productDetails!.link, image: "");
                           },
@@ -1156,50 +1157,52 @@ class _ProductDetailsState extends State<ProductDetails>
                             ],
                           ),
                         ),
-                        if(_productDetails?.downloads != null)
-                        Column(
-                          children: [
-                            divider(),
-                            InkWell(
-                              onTap: () async{
-                                print(_productDetails?.downloads);
-                                var url = Uri.parse(_productDetails?.downloads??"");
-                                print(url);
-                                launchUrl(url,mode: LaunchMode.externalApplication);
-                              },
-                              child: Container(
-                                color: MyTheme.white,
-                                height: 48,
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    18.0,
-                                    14.0,
-                                    18.0,
-                                    14.0,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        AppLocalizations.of(context)!.downloads_ucf,
-                                        style: TextStyle(
-                                            color: MyTheme.dark_font_grey,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      Spacer(),
-                                      Image.asset(
-                                        "assets/arrow.png",
-                                        height: 11,
-                                        width: 20,
-                                      ),
-                                    ],
+                        if (_productDetails?.downloads != null)
+                          Column(
+                            children: [
+                              divider(),
+                              InkWell(
+                                onTap: () async {
+                                  print(_productDetails?.downloads);
+                                  var url = Uri.parse(
+                                      _productDetails?.downloads ?? "");
+                                  print(url);
+                                  launchUrl(url,
+                                      mode: LaunchMode.externalApplication);
+                                },
+                                child: Container(
+                                  color: MyTheme.white,
+                                  height: 48,
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                      18.0,
+                                      14.0,
+                                      18.0,
+                                      14.0,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .downloads_ucf,
+                                          style: TextStyle(
+                                              color: MyTheme.dark_font_grey,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        Spacer(),
+                                        Image.asset(
+                                          "assets/arrow.png",
+                                          height: 11,
+                                          width: 20,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-
+                            ],
+                          ),
                         divider(),
                         InkWell(
                           onTap: () {
@@ -2398,7 +2401,7 @@ class _ProductDetailsState extends State<ProductDetails>
         : Container();
   }
 
-   buildExpandableDescription(){
+  buildExpandableDescription() {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -2415,7 +2418,7 @@ class _ProductDetailsState extends State<ProductDetails>
                 if (webViewHeight == 50) {
                   webViewHeight = double.parse(
                     (await controller.runJavaScriptReturningResult(
-                        "document.getElementById('scaled-frame').clientHeight"))
+                            "document.getElementById('scaled-frame').clientHeight"))
                         .toString(),
                   );
                   print(webViewHeight);
@@ -2573,7 +2576,9 @@ class _ProductDetailsState extends State<ProductDetails>
                   stroked_price: _relatedProducts[index].stroked_price,
                   is_wholesale: _relatedProducts[index].isWholesale,
                   discount: _relatedProducts[index].discount,
-                  has_discount: _relatedProducts[index].has_discount);
+                  has_discount: _relatedProducts[index].has_discount,
+                  product: _relatedProducts[index],
+              );
             },
           ),
         ),
@@ -2602,7 +2607,7 @@ class _ProductDetailsState extends State<ProductDetails>
 
                 fetchAndSetVariantWiseInfo();
                 // calculateTotalPrice();
-              }else if (_quantity! < 1) {
+              } else if (_quantity! < 1) {
                 ToastComponent.showDialog("No Stocks Available",
                     gravity: Toast.center, duration: Toast.lengthLong);
               } else if (_quantity! >= _quantity!) {
@@ -2624,51 +2629,52 @@ class _ProductDetailsState extends State<ProductDetails>
               // calculateTotalPrice();
               // fetchVariantPrice();
               fetchAndSetVariantWiseInfo();
-            }else if (_quantity! < 1) {
+            } else if (_quantity! < 1) {
               ToastComponent.showDialog("Need to select atleast one item",
                   gravity: Toast.center, duration: Toast.lengthLong);
             }
-          }
-          ));
+          }));
 
   openPhotoDialog(BuildContext context, path) => showDialog(
         context: context,
         builder: (BuildContext context) {
           return Dialog(
             child: Container(
-                child: Stack(
-              children: [
-                PhotoView(
-                  enableRotation: true,
-                  heroAttributes: const PhotoViewHeroAttributes(tag: "someTag"),
-                  imageProvider: NetworkImage(path),
-                ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    decoration: ShapeDecoration(
-                      color: MyTheme.medium_grey_50,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(25),
-                          bottomRight: Radius.circular(25),
-                          topRight: Radius.circular(25),
-                          topLeft: Radius.circular(25),
+              child: Stack(
+                children: [
+                  PhotoView(
+                    enableRotation: true,
+                    heroAttributes:
+                        const PhotoViewHeroAttributes(tag: "someTag"),
+                    imageProvider: NetworkImage(path),
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      decoration: ShapeDecoration(
+                        color: MyTheme.medium_grey_50,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(25),
+                            bottomRight: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                            topLeft: Radius.circular(25),
+                          ),
                         ),
                       ),
-                    ),
-                    width: 40,
-                    height: 40,
-                    child: IconButton(
-                      icon: Icon(Icons.clear, color: MyTheme.white),
-                      onPressed: () {
-                        Navigator.of(context, rootNavigator: true).pop();
-                      },
+                      width: 40,
+                      height: 40,
+                      child: IconButton(
+                        icon: Icon(Icons.clear, color: MyTheme.white),
+                        onPressed: () {
+                          Navigator.of(context, rootNavigator: true).pop();
+                        },
+                      ),
                     ),
                   ),
-                ),
-              ],
-            )),
+                ],
+              ),
+            ),
           );
         },
       );

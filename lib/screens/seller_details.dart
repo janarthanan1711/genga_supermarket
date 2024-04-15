@@ -403,7 +403,9 @@ class _SellerDetailsState extends State<SellerDetails> {
                         name: _featuredProducts[index].name,
                         main_price: _featuredProducts[index].main_price,
                         stroked_price: _featuredProducts[index].stroked_price,
-                        has_discount: _featuredProducts[index].has_discount),
+                        has_discount: _featuredProducts[index].has_discount,
+                        product: _featuredProducts[index],
+                    ),
                   );
                 },
                 separatorBuilder: (context, index) {
@@ -701,6 +703,7 @@ class _SellerDetailsState extends State<SellerDetails> {
             has_discount: _topProducts[index].has_discount,
             discount: _topProducts[index].discount,
             is_wholesale: _topProducts[index].isWholesale,
+            product: _topProducts[index],
           );
         });
   }
@@ -728,6 +731,7 @@ class _SellerDetailsState extends State<SellerDetails> {
               has_discount: _newArrivalProducts[index].has_discount,
               discount: _newArrivalProducts[index].discount,
               is_wholesale: _newArrivalProducts[index].isWholesale,
+              product: _newArrivalProducts[index],
             );
           });
     } else if (_newArrivalProducts.length == 0) {
@@ -1036,6 +1040,7 @@ class _SellerDetailsState extends State<SellerDetails> {
             has_discount: _allProductList[index].has_discount,
             discount: _allProductList[index].discount,
             is_wholesale: _allProductList[index].isWholesale,
+            product: _allProductList[index],
           );
         });
   }

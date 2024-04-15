@@ -86,6 +86,7 @@ class _TopSellingProductsState extends State<TopSellingProducts> {
                     has_discount: productResponse.products![index].has_discount,
                     discount: productResponse.products![index].discount,
                     is_wholesale: productResponse.products![index].isWholesale,
+                    product: productResponse.products![index],
                   );
                 },
               ),

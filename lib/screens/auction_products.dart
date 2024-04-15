@@ -164,7 +164,10 @@ class _AuctionProductsState extends State<AuctionProducts> {
                 stroked_price: _auctionlProductItems[index].stroked_price,
                 is_wholesale: false,
                 // discount: _auctionlProductItems[index].discount,
-                has_discount: false);
+                has_discount: false,
+                product: _auctionlProductItems[index],
+
+            );
           },
         ),
       ),

@@ -87,6 +87,7 @@ dependencies:
   file_picker: ^5.2.4
   otp_text_field:
   flutter_sound:
+  get:
 
 dev_dependencies:
   flutter_test:

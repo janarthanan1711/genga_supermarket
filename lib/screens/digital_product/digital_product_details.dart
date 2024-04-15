@@ -2227,7 +2227,9 @@ class _DigitalProductDetailsState extends State<DigitalProductDetails>
                   name: _relatedProducts[index].name,
                   main_price: _relatedProducts[index].main_price,
                   stroked_price: _relatedProducts[index].stroked_price,
-                  has_discount: _relatedProducts[index].has_discount);
+                  has_discount: _relatedProducts[index].has_discount,
+                  product: _relatedProducts[index],
+              );
             },
           ),
         ),

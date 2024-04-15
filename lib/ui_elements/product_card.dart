@@ -2,8 +2,12 @@ import 'package:active_ecommerce_flutter/custom/box_decorations.dart';
 import 'package:active_ecommerce_flutter/helpers/system_config.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/screens/product_details.dart';
+import 'package:active_ecommerce_flutter/ui_elements/product_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../controllers/product_controller.dart';
+import '../data_model/product_mini_response.dart';
 import '../helpers/shared_value_helper.dart';
 import '../screens/auction_products_details.dart';
 
@@ -17,6 +21,7 @@ class ProductCard extends StatefulWidget {
   bool? has_discount;
   bool? is_wholesale;
   var discount;
+  Product product;
 
   ProductCard({
     Key? key,
@@ -29,11 +34,14 @@ class ProductCard extends StatefulWidget {
     this.stroked_price,
     this.has_discount,
     this.discount,
+    required this.product
   }) : super(key: key);
 
   @override
   _ProductCardState createState() => _ProductCardState();
 }
+
+final ProductController productController = Get.put(ProductController());
 
 class _ProductCardState extends State<ProductCard> {
   @override
@@ -144,18 +152,23 @@ class _ProductCardState extends State<ProductCard> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Container(
-                      height: 35,
-                      width: 35,
-                      decoration: BoxDecoration(
-                        color: MyTheme.accent_color,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
+                    InkWell(
+                      child: Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                          color: MyTheme.accent_color,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        child: Center(
+                          child: Icon(Icons.add,color: MyTheme.white,),
                         ),
                       ),
-                      child: Center(
-                        child: Icon(Icons.add,color: MyTheme.white,),
-                      ),
+                      onTap: ()async{
+                        await variantAlertDialog(context);
+                      },
                     )
                   ],
                 ),
@@ -246,6 +259,46 @@ class _ProductCardState extends State<ProductCard> {
           ],
         ),
       ),
+    );
+  }
+
+  Future variantAlertDialog(BuildContext context) async {
+    // Set loading to true to display loader
+    productController.isLoading.value = true;
+    await productController.fetchProductDetailsMain(widget.id);
+    // Set loading to false after data is fetched
+    productController.isLoading.value = false;
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        productController.quantityController = TextEditingController();
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          content: Container(
+            height: 220,
+            child: GetBuilder<ProductController>(
+              builder: (productController) {
+                if (productController.isLoading.value) {
+                  // Show loader if isLoading is true
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  // Display content once data is loaded
+                  // return Container();
+                  return ProductAlertBox(
+                    product: widget.product,
+                    productController: productController,
+                  );
+                }
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

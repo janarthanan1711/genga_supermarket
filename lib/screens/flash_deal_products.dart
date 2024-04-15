@@ -221,6 +221,7 @@ class _FlashDealProductsState extends State<FlashDealProducts> {
                           has_discount: _searchList[index].has_discount,
                           discount: _searchList[index].discount,
                         is_wholesale:_searchList[index].isWholesale ,
+                        product: _searchList[index],
                       );
                     },
                   ),

@@ -483,6 +483,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             stroked_price: homeData.allProductList[index].stroked_price,
             has_discount: homeData.allProductList[index].has_discount,
             discount: homeData.allProductList[index].discount,
+            product: homeData.allProductList[index],
           );
         },
       );
@@ -519,6 +520,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               has_discount: homeData.allProductList[index].has_discount,
               discount: homeData.allProductList[index].discount,
               is_wholesale: homeData.allProductList[index].isWholesale,
+              product: homeData.allProductList[index],
             );
           });
     } else if (homeData.totalAllProductData == 0) {
@@ -684,6 +686,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         is_wholesale:
                             homeData.todaysDealProducts[index].isWholesale,
                         discount: homeData.todaysDealProducts[index].discount,
+                  product: homeData.todaysDealProducts[index],
                       );
               },
             ),
@@ -771,6 +774,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         is_wholesale:
                             homeData.bestSellingProducts[index].isWholesale,
                         discount: homeData.bestSellingProducts[index].discount,
+                  product: homeData.bestSellingProducts[index],
                       );
               },
             ),
@@ -862,6 +866,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         is_wholesale:
                             homeData.featuredProductList[index].isWholesale,
                         discount: homeData.featuredProductList[index].discount,
+                  product: homeData.featuredProductList[index],
                       );
               },
             ),

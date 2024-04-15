@@ -353,7 +353,9 @@ class _CategoryProductsState extends State<CategoryProducts> {
                   stroked_price: _productList[index].stroked_price,
                   discount: _productList[index].discount,
                   is_wholesale: _productList[index].isWholesale,
-                  has_discount: _productList[index].has_discount);
+                  has_discount: _productList[index].has_discount,
+                product: _productList[index],
+              );
             },
           ),
         ),

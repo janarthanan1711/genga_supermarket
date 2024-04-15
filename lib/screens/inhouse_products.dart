@@ -167,6 +167,7 @@ class _InhouseProductsState extends State<InhouseProducts> {
                 has_discount: _inhouseProductList[index].has_discount,
                 discount: _inhouseProductList[index].discount,
                 is_wholesale: _inhouseProductList[index].isWholesale,
+                product: _inhouseProductList[index],
               );
             },
           ),

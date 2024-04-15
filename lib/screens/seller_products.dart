@@ -208,6 +208,7 @@ backgroundColor: Colors.white,
                  has_discount: _productList[index].has_discount,
                  discount: _productList[index].discount,
                  is_wholesale: _productList[index].isWholesale,
+                 product: _productList[index],
 
                );
              },
