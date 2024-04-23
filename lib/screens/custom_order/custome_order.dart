@@ -60,7 +60,7 @@ class _CustomOrderState extends State<CustomOrder>
 
   getCustomStoreDatas() async {
     var customDataResponse =
-        await FileUploadRepository().getCustomOrderDatas(page: currentPage);
+        await FileUploadRepository().getCustomOrderDatas();
     if (customDataResponse.customData!.isNotEmpty) {
       dataAvailable = true;
       List<CustomData> imageList = customDataResponse.customData!
@@ -115,7 +115,7 @@ class _CustomOrderState extends State<CustomOrder>
         gravity: Toast.center,
         duration: Toast.lengthLong,
       );
-      // refresh();
+      refresh();
       // _images.add(customOrderUpdateResponse.path!);
       setState(() {});
     }
@@ -198,7 +198,7 @@ class _CustomOrderState extends State<CustomOrder>
         gravity: Toast.center,
         duration: Toast.lengthLong,
       );
-      // refresh();
+      refresh();
       // loadedAudio.add(customOrderUpdateResponse.path!);
       // _images.add(customOrderUpdateResponse.path!);
       setState(() {});
@@ -208,7 +208,6 @@ class _CustomOrderState extends State<CustomOrder>
   }
 
   Future<bool> fetchData() async {
-    // getImageList();
     getCustomStoreDatas();
     setState(() {});
     return true;
@@ -231,7 +230,7 @@ class _CustomOrderState extends State<CustomOrder>
   }
 
   Future<bool> resetData() async {
-    // await clearData();
+    await clearData();
     await fetchData();
     return true;
   }
@@ -246,16 +245,16 @@ class _CustomOrderState extends State<CustomOrder>
     tabController = TabController(length: 2, vsync: this);
     selectedTab = 0;
     print("Scrolling Called");
-    mainScrollController.addListener(() {
-      if (mainScrollController.position.pixels ==
-          mainScrollController.position.maxScrollExtent) {
-        if (currentPage >= lastPage!) {
-          currentPage++;
-          // getImageList();
-          getCustomStoreDatas();
-        }
-      }
-    });
+    // mainScrollController.addListener(() {
+    //   if (mainScrollController.position.pixels ==
+    //       mainScrollController.position.maxScrollExtent) {
+    //     if (currentPage >= lastPage!) {
+    //       currentPage++;
+    //       // getImageList();
+    //       getCustomStoreDatas();
+    //     }
+    //   }
+    // });
     // sortBy = sortList.first;
     fetchData();
     // scrollControllerPosition();
@@ -381,7 +380,7 @@ class _CustomOrderState extends State<CustomOrder>
     return Padding(
       padding: const EdgeInsets.only(top: 145.0),
       child: GridView.builder(
-          controller: mainScrollController,
+          // controller: mainScrollController,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12,
@@ -401,7 +400,7 @@ class _CustomOrderState extends State<CustomOrder>
     return Padding(
       padding: const EdgeInsets.only(top: 145.0),
       child: GridView.builder(
-          controller: mainScrollController,
+          // controller: mainScrollController,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12,

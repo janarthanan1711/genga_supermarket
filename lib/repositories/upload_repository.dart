@@ -104,8 +104,8 @@ class FileUploadRepository {
   }
 
 
-  Future<CustomOrderData> getCustomOrderDatas({page = 1}) async {
-    String url = ("${AppConfig.BASE_URL}/custom-order?page=$page");
+  Future<CustomOrderData> getCustomOrderDatas() async {
+    String url = ("${AppConfig.BASE_URL}/custom-order");
     final response = await ApiRequest.get(url: url, headers: {
       "Content-Type": "application/json",
       "Authorization": "Bearer ${access_token.$}",

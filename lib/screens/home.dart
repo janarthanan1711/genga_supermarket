@@ -165,8 +165,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   0.0,
                                 ),
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       AppLocalizations.of(context)!
@@ -192,8 +191,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     height: 180,
                                     width: double.infinity,
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Image.asset("assets/background_1.png")
                                       ],
@@ -205,9 +203,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(
-                                            top: 10.0,
-                                            right: 18.0,
-                                            left: 18.0),
+                                            top: 10.0, right: 18.0, left: 18.0),
                                         child: Text(
                                           AppLocalizations.of(context)!
                                               .todays_deal_ucf,
@@ -287,8 +283,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     height: 180,
                                     width: double.infinity,
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Image.asset("assets/background_1.png")
                                       ],
@@ -300,9 +295,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(
-                                            top: 10.0,
-                                            right: 18.0,
-                                            left: 18.0),
+                                            top: 10.0, right: 18.0, left: 18.0),
                                         child: Text(
                                           AppLocalizations.of(context)!
                                               .featured_products_ucf,
@@ -337,8 +330,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     height: 180,
                                     width: double.infinity,
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Image.asset("assets/background_1.png")
                                       ],
@@ -350,9 +342,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(
-                                            top: 10.0,
-                                            right: 18.0,
-                                            left: 18.0),
+                                            top: 10.0, right: 18.0, left: 18.0),
                                         child: Text(
                                           AppLocalizations.of(context)!
                                               .best_selling_ucf,
@@ -361,8 +351,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                               fontWeight: FontWeight.w700),
                                         ),
                                       ),
-                                      buildHomeBestDealHorizontalList(
-                                          homeData)
+                                      buildHomeBestDealHorizontalList(homeData)
                                     ],
                                   ),
                                 ],
@@ -569,8 +558,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 child: Row(
                   children: <Widget>[
                     Container(
-                        width: 40,
-                        // height: 40,
+                        width: 80,
+                        height: 52,
                         child: ClipRRect(
                             borderRadius: BorderRadius.horizontal(
                                 left: Radius.circular(6), right: Radius.zero),
@@ -578,7 +567,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               placeholder: 'assets/placeholder.png',
                               image:
                                   homeData.featuredCategoryList[index].banner,
-                              // fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                             ))),
                     Flexible(
                       child: Padding(
@@ -686,7 +675,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         is_wholesale:
                             homeData.todaysDealProducts[index].isWholesale,
                         discount: homeData.todaysDealProducts[index].discount,
-                  product: homeData.todaysDealProducts[index],
+                        product: homeData.todaysDealProducts[index],
                       );
               },
             ),
@@ -774,7 +763,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         is_wholesale:
                             homeData.bestSellingProducts[index].isWholesale,
                         discount: homeData.bestSellingProducts[index].discount,
-                  product: homeData.bestSellingProducts[index],
+                        product: homeData.bestSellingProducts[index],
                       );
               },
             ),
@@ -866,7 +855,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         is_wholesale:
                             homeData.featuredProductList[index].isWholesale,
                         discount: homeData.featuredProductList[index].discount,
-                  product: homeData.featuredProductList[index],
+                        product: homeData.featuredProductList[index],
                       );
               },
             ),
@@ -1091,8 +1080,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   height: 180,
                   // color: Colors.green,
                   decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+                    image: DecorationImage(
+                      image: NetworkImage(imageUrl),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 );
                 // return Image.network(imageUrl, fit: BoxFit.cover);
               },

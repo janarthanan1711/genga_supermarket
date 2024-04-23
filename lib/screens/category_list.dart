@@ -303,7 +303,7 @@ class _CategoryListState extends State<CategoryList> {
                   child: FadeInImage.assetNetwork(
                     placeholder: 'assets/placeholder.png',
                     image: categoryResponse.categories[index].banner,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     height: itemWidth,
                     width: DeviceInfo(context).width,
                   ),

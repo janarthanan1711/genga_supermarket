@@ -21,7 +21,7 @@ class AIZImage{
 
 
 
-  static Widget radiusImage(String? url,double radius ,{BoxFit fit=BoxFit.cover,bool isShadow= true}){
+  static Widget radiusImage(String? url,double radius ,{BoxFit fit=BoxFit.fill,bool isShadow= true}){
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(image:CachedNetworkImageProvider(url??"",),fit: fit,onError: (obj,e){

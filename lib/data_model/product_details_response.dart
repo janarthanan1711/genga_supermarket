@@ -98,7 +98,6 @@ class DetailedProduct {
   String? description;
   String? downloads;
   String? video_link;
-
   String? link;
   Brand? brand;
   List<Wholesale>? wholesale;

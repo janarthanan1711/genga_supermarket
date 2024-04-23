@@ -264,6 +264,7 @@ class ProductRepository {
     final response = await ApiRequest.get(url: url, headers: {
       "App-Language": app_language.$!,
     });
+    print("get Product response======>${response.body}");
 
     return productDetailsResponseFromJson(response.body);
   }

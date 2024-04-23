@@ -45,7 +45,7 @@ class _MiniProductCardState extends State<MiniProductCard> {
   @override
   void initState() {
     // TODO: implement initState
-    productController.fetchProductDetailsMain(widget.id);
+    // productController.fetchProductDetailsMain(widget.product.id);
     super.initState();
   }
   @override
@@ -244,6 +244,7 @@ class _MiniProductCardState extends State<MiniProductCard> {
     );
   }
   Future variantAlertDialog(BuildContext context) async {
+    print('AlertDialog called');
     // Set loading to true to display loader
     productController.isLoading.value = true;
     await productController.fetchProductDetailsMain(widget.id);
