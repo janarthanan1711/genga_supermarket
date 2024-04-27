@@ -16,7 +16,8 @@ class GetStartedPage extends StatelessWidget {
           Container(
             height: MediaQuery.sizeOf(context).height,
             width: MediaQuery.sizeOf(context).width,
-            child: Image.asset("assets/get_started_image.png"),
+            child:
+                Image.asset("assets/get_started_image.png", fit: BoxFit.fill),
           ),
           Positioned(
             bottom: 120,
@@ -48,20 +49,24 @@ class GetStartedPage extends StatelessWidget {
                 Container(
                   height: 45,
                   decoration: BoxDecoration(
-                      border: Border.all(color: MyTheme.textfield_grey, width: 1),
-                      borderRadius: const BorderRadius.all(Radius.circular(12.0))),
+                      border:
+                          Border.all(color: MyTheme.textfield_grey, width: 1),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12.0))),
                   child: Btn.minWidthFixHeight(
                     minWidth: 350,
                     height: 45,
                     color: MyTheme.accent_color,
                     shape: RoundedRectangleBorder(
-                        borderRadius: const BorderRadius.all(Radius.circular(12.0))),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(12.0))),
                     child: Text(
                       "Get Started",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600),
+                        color: Colors.white,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     onPressed: () {
                       // onPressedLogin();
